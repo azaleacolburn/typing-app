@@ -7,7 +7,7 @@ export const POST: RequestHandler = async (event: RequestEvent) => {
     const options = json_event.options
     const word_count = json_event.word_count
 
-    const words: string = generateSlug(word_count, options)
+    const words: string = generateSlug(word_count, options).toLowerCase()
 
     return json({
         success: true,

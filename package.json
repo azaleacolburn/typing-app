@@ -25,6 +25,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"random-word-slugs": "^0.1.7"
+		"random-word-slugs": "^0.1.7",
+		"socket.io": "^4.6.2",
+		"socket.io-client": "^4.6.2"
 	}
 }
