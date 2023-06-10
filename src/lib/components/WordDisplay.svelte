@@ -1,7 +1,7 @@
 <script lang="ts">
-    import WPM from "$lib/components/WPM.svelte"
     import { has_started, entires_typed, error_count, time } from "../../stores"
-    import Clock from "$lib/components/Clock.svelte"
+    import { generateSlug } from "random-word-slugs"
+
     let i: number = 0
     let words: string = ""
     let typed_words_correct: boolean[] = []
@@ -37,25 +37,11 @@
         entires_typed.set(0)
         has_started.set(false)
         i = 0
-        words = ""
         typed_words_correct = []
         typed = ""
         let options = { format: "sentence" }
         let word_count = 10
-        fetch("/api/words", {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify({word_count, options})
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data.words)
-                words = data.words
-                if (!data.success) alert("REQUEST NOT SUCCESSFUL")
-            })
-            .catch((e) => alert("CAUGHT ERROR: \n" + e))
+        words = generateSlug(word_count, options as any).toLowerCase()
     }
 </script>
 <svelte:window on:keydown={handle_typing}/>
