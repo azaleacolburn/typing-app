@@ -5,5 +5,3 @@ Started: 6/9/23
 
 ## Todo:
 - Fix clock
-- Fix escape misalignment
-- Fix button focus
