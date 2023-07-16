@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte"
-    import { entires_typed, error_count } from "../../stores"
+    import { entires_typed, error_count } from "../../../stores"
     import { generateSlug } from "random-word-slugs"
 
     let i: number = 0
@@ -11,14 +11,14 @@
 
     function handle_typing (event: any): void {
         if (typed == "") dispatch('code', 1)
+        else dispatch('code', 2)
         document.getElementById("toFocus")?.focus()
         document.getElementById("toFocus")?.blur()
         let key = event.key as string
         console.log(key)
         if (key == "Shift") return
-        if (words[i] == " " && key == " ") {
+        if (words[i] == " " && key == " ")
             entires_typed.update(n => n + 1)
-        }
         if (key == "Backspace") {
             typed = typed.substring(0, typed.length - 1)
             if (!typed_words_correct[typed_words_correct.length - 1] && $error_count > 0) error_count.update(n => n - 1)
@@ -61,11 +61,11 @@
                     {typed.charAt(letter_i)}
                 </letter>
             {:else if letter_i >= typed.length}
-                <letter class="text-gray-500">
+                <letter class="text-gray-500 mt-6">
                     {letter}
                 </letter>
             {:else}
-                <letter class="text-red-500">
+                <letter class="text-red-500 mt-6">
                     {typed.charAt(letter_i)}
                 </letter>
             {/if}

@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
 </script>
 
 <header class="w-full justify-items-center">
@@ -17,6 +15,10 @@
 
 			<li aria-current={$page.url.pathname.startsWith('/typing') ? 'page' : undefined}>
 				<a href="/typing">Typing</a>
+			</li>
+
+			<li aria-current={$page.url.pathname.startsWith('/climate') ? 'page' : undefined}>
+				<a href="/climate">Climate</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">

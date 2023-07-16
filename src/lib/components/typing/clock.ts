@@ -17,4 +17,9 @@ export class Clock {
         if (this.start_time == 0) return 0
         return Date.now() - this.start_time
     }
+
+    clockRun() {
+        let clock = new Clock();
+        clock.start();
+    }
 }
